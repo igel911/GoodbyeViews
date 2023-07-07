@@ -32,9 +32,6 @@ fun MainScreen() {
             )
         }
         LoginOptions()
-        /*Text(modifier = Modifier.fillMaxWidth().weight(1.0f),
-            text = "There"
-        )*/
     }
 }
 

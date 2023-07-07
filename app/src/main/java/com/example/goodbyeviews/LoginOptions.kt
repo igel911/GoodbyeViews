@@ -51,7 +51,7 @@ fun LoginOptions() {
     ) {
         Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = "Welcome!",
+            text = stringResource(R.string.welcome),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
@@ -62,7 +62,7 @@ fun LoginOptions() {
             onValueChange = { newText ->
                 emailValue = newText
             },
-            placeholder = { Text(text = "Email Address") },
+            placeholder = { Text(text = stringResource(R.string.email)) },
             shape = RoundedCornerShape(10.dp)
         )
         Spacer(modifier = Modifier.height(24.dp))
@@ -72,22 +72,22 @@ fun LoginOptions() {
             onValueChange = { newText ->
                 passwordValue = newText
             },
-            placeholder = { Text(text = "Password") },
+            placeholder = { Text(text = stringResource(R.string.password)) },
             shape = RoundedCornerShape(10.dp),
             trailingIcon = {
                 IconButton(onClick = { showPassword = !showPassword }) {
                     Icon(
-                        imageVector = if (showPassword) Icons.Outlined.VisibilityOff else Icons.Outlined.Visibility,
-                        contentDescription = if (showPassword) "Show Password" else "Hide Password"
+                        imageVector = getCorrectPasswordImage(showPassword),
+                        contentDescription = getCorrectPasswordDescription(showPassword)
                     )
                 }
             },
-            visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
+            visualTransformation = getCorrectPasswordTransformation(showPassword)
 
         )
         Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = "Forgot password?",
+            text = stringResource(R.string.forgot_password),
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Blue
@@ -96,7 +96,7 @@ fun LoginOptions() {
         Button(
             modifier = Modifier.fillMaxWidth(),
             shape = CutCornerShape(10),
-            elevation =  ButtonDefaults.buttonElevation(
+            elevation = ButtonDefaults.buttonElevation(
                 defaultElevation = 10.dp,
                 pressedElevation = 15.dp,
                 disabledElevation = 0.dp
@@ -104,8 +104,8 @@ fun LoginOptions() {
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Blue
             ),
-            onClick = {  }) {
-                Text(text = "Login")
+            onClick = { }) {
+            Text(text = stringResource(R.string.login))
         }
         Spacer(modifier = Modifier.height(24.dp))
         Row(
@@ -113,14 +113,14 @@ fun LoginOptions() {
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Not a member?",
+                text = stringResource(R.string.not_a_member),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = "Register now",
+                text = stringResource(R.string.register_now),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Blue
@@ -154,8 +154,8 @@ fun LoginOptions() {
 
             Spacer(modifier = Modifier.width(8.dp))
             Image(
-                    painter = painterResource(id = R.drawable.buttonapple),
-            contentDescription = stringResource(R.string.apple)
+                painter = painterResource(id = R.drawable.buttonapple),
+                contentDescription = stringResource(R.string.apple)
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -167,6 +167,24 @@ fun LoginOptions() {
         }
         Spacer(modifier = Modifier.height(24.dp))
     }
+}
+
+@Composable
+private fun getCorrectPasswordTransformation(showPassword: Boolean) =
+    if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
+
+@Composable
+private fun getCorrectPasswordDescription(showPassword: Boolean) = if (showPassword) {
+    stringResource(R.string.show_password)
+} else {
+    stringResource(R.string.hide_password)
+}
+
+@Composable
+private fun getCorrectPasswordImage(showPassword: Boolean) = if (showPassword) {
+    Icons.Outlined.VisibilityOff
+} else {
+    Icons.Outlined.Visibility
 }
 
 @Preview(showBackground = true)

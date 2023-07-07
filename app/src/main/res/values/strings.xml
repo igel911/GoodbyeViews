@@ -4,4 +4,13 @@
     <string name="apple">Apple</string>
     <string name="facebook">Facebook</string>
     <string name="continue_with">"Or continue with"</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="email">"Email Address"</string>
+    <string name="password">"Password"</string>
+    <string name="show_password">"Show Password"</string>
+    <string name="hide_password">"Hide Password"</string>
+    <string name="forgot_password">"Forgot password?"</string>
+    <string name="login">"Login"</string>
+    <string name="not_a_member">"Not a member?"</string>
+    <string name="register_now">"Register now"</string>
 </resources>
