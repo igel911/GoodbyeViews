@@ -29,10 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
@@ -50,9 +48,9 @@ fun LoginOptions() {
     ) {
         HorizontalSpacer()
 
-        Text(
-            text = stringResource(R.string.welcome),
-            fontSize = 24.sp,
+        TextLabel(
+            textId = R.string.welcome,
+            fontSize = 24,
             fontWeight = FontWeight.Bold
         )
 
@@ -92,11 +90,10 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        Text(
-            text = stringResource(R.string.forgot_password),
-            fontSize = 12.sp,
+        TextLabel(
+            textId = R.string.forgot_password,
             fontWeight = FontWeight.Bold,
-            color = Color.Blue
+            textColor = Color.Blue
         )
 
         HorizontalSpacer()
@@ -122,30 +119,22 @@ fun LoginOptions() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = stringResource(R.string.not_a_member),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color.Black
+            TextLabel(
+                textId = R.string.not_a_member,
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = stringResource(R.string.register_now),
-                fontSize = 12.sp,
+            TextLabel(
+                textId = R.string.register_now,
                 fontWeight = FontWeight.Bold,
-                color = Color.Blue
+                textColor = Color.Blue
             )
         }
 
         HorizontalDivider()
 
-        Text(
+        TextLabel(
             modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            text = stringResource(R.string.continue_with),
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Medium,
-            color = Color.Black
+            textId = R.string.continue_with
         )
 
         HorizontalSpacer()
