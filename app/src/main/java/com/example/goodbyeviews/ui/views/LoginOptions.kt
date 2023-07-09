@@ -16,7 +16,6 @@ import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -138,11 +137,7 @@ fun LoginOptions() {
             )
         }
 
-        Divider(
-            modifier = Modifier.padding(0.dp, 24.dp),
-            thickness = 1.dp,
-            color = Color.Gray
-        )
+        HorizontalDivider()
 
         Text(
             modifier = Modifier.fillMaxWidth(),
