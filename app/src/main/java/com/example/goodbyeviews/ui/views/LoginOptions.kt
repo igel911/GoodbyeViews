@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
@@ -50,14 +49,15 @@ fun LoginOptions() {
             .fillMaxWidth()
             .padding(PaddingValues(start = 16.dp, end = 16.dp))
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         Text(
             text = stringResource(R.string.welcome),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
-        Spacer(modifier = Modifier.height(24.dp))
+
+        HorizontalSpacer()
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -69,7 +69,7 @@ fun LoginOptions() {
             shape = RoundedCornerShape(10.dp)
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -91,7 +91,7 @@ fun LoginOptions() {
 
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         Text(
             text = stringResource(R.string.forgot_password),
@@ -100,7 +100,7 @@ fun LoginOptions() {
             color = Color.Blue
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         Button(
             modifier = Modifier.fillMaxWidth(),
@@ -117,7 +117,7 @@ fun LoginOptions() {
             Text(text = stringResource(R.string.login))
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -153,7 +153,7 @@ fun LoginOptions() {
             color = Color.Black
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -178,7 +178,7 @@ fun LoginOptions() {
 
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        HorizontalSpacer()
     }
 }
 
