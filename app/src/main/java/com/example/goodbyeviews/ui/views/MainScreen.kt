@@ -1,4 +1,4 @@
-package com.example.goodbyeviews
+package com.example.goodbyeviews.ui.views
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,10 +23,13 @@ fun MainScreen() {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .height(300.dp)) {
-            Text(modifier = Modifier.align(Alignment.Center),
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+        ) {
+            Text(
+                modifier = Modifier.align(Alignment.Center),
                 textAlign = TextAlign.Center,
                 text = "Here should be a picture but I messed up :("
             )

@@ -1,7 +1,6 @@
-package com.example.goodbyeviews
+package com.example.goodbyeviews.ui.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,6 +17,7 @@ import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 
@@ -137,15 +138,11 @@ fun LoginOptions() {
             )
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-        // TODO: replace with Divider
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(color = Color.Gray)
+        Divider(
+            modifier = Modifier.padding(0.dp, 24.dp),
+            thickness = 1.dp,
+            color = Color.Gray
         )
-        Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             modifier = Modifier.fillMaxWidth(),
