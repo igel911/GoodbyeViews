@@ -50,12 +50,14 @@ fun LoginOptions() {
             .padding(PaddingValues(start = 16.dp, end = 16.dp))
     ) {
         Spacer(modifier = Modifier.height(24.dp))
+
         Text(
             text = stringResource(R.string.welcome),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(24.dp))
+
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = emailValue,
@@ -65,7 +67,9 @@ fun LoginOptions() {
             placeholder = { Text(text = stringResource(R.string.email)) },
             shape = RoundedCornerShape(10.dp)
         )
+
         Spacer(modifier = Modifier.height(24.dp))
+
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = passwordValue,
@@ -85,14 +89,18 @@ fun LoginOptions() {
             visualTransformation = getCorrectPasswordTransformation(showPassword)
 
         )
+
         Spacer(modifier = Modifier.height(24.dp))
+
         Text(
             text = stringResource(R.string.forgot_password),
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Blue
         )
+
         Spacer(modifier = Modifier.height(24.dp))
+
         Button(
             modifier = Modifier.fillMaxWidth(),
             shape = CutCornerShape(10),
@@ -107,7 +115,9 @@ fun LoginOptions() {
             onClick = { }) {
             Text(text = stringResource(R.string.login))
         }
+
         Spacer(modifier = Modifier.height(24.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
@@ -126,7 +136,9 @@ fun LoginOptions() {
                 color = Color.Blue
             )
         }
+
         Spacer(modifier = Modifier.height(24.dp))
+        // TODO: replace with Divider
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
@@ -134,6 +146,7 @@ fun LoginOptions() {
                 .background(color = Color.Gray)
         )
         Spacer(modifier = Modifier.height(24.dp))
+
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
@@ -142,7 +155,9 @@ fun LoginOptions() {
             fontWeight = FontWeight.Medium,
             color = Color.Black
         )
+
         Spacer(modifier = Modifier.height(24.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
@@ -165,6 +180,7 @@ fun LoginOptions() {
             )
 
         }
+
         Spacer(modifier = Modifier.height(24.dp))
     }
 }
