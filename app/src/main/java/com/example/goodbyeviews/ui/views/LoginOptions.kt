@@ -1,6 +1,5 @@
 package com.example.goodbyeviews.ui.views
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,8 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -109,28 +106,7 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.buttongoogle),
-                contentDescription = stringResource(R.string.google)
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-            Image(
-                painter = painterResource(id = R.drawable.buttonapple),
-                contentDescription = stringResource(R.string.apple)
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-            Image(
-                painter = painterResource(id = R.drawable.buttonfacebook),
-                contentDescription = stringResource(R.string.facebook)
-            )
-
-        }
+        LoginVariants()
 
         HorizontalSpacer()
     }
