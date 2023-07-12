@@ -6,6 +6,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -18,11 +22,11 @@ fun OutlinedPasswordInput(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
-    showPassword: Boolean,
     @StringRes placeholderText: Int = R.string.empty,
-    shape: Shape = RoundedCornerShape(10.dp),
-    onIconClick: () -> Unit = {}
+    shape: Shape = RoundedCornerShape(10.dp)
 ) {
+    var showPassword by remember { mutableStateOf(false) }
+
     OutlinedTextInput(
         modifier = modifier,
         value = value,
@@ -32,7 +36,7 @@ fun OutlinedPasswordInput(
         icon = getCorrectPasswordImage(showPassword),
         shape = shape,
         contentDescription = getCorrectPasswordDescription(showPassword),
-        onIconClick = onIconClick
+        onIconClick = { showPassword = !showPassword }
     )
 }
 

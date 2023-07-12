@@ -33,7 +33,7 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 fun LoginOptions() {
     var emailValue by remember { mutableStateOf("") }
     var passwordValue by remember { mutableStateOf("") }
-    var showPassword by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -66,9 +66,7 @@ fun LoginOptions() {
             onValueChange = { newText ->
                 passwordValue = newText
             },
-            showPassword = showPassword,
-            placeholderText = R.string.password,
-            onIconClick = { showPassword = !showPassword }
+            placeholderText = R.string.password
         )
 
         HorizontalSpacer()
