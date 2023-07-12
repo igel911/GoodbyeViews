@@ -10,32 +10,25 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Visibility
-import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginOptions() {
     var emailValue by remember { mutableStateOf("") }
@@ -56,36 +49,26 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        OutlinedTextField(
+        OutlinedTextInput(
             modifier = Modifier.fillMaxWidth(),
             value = emailValue,
             onValueChange = { newText ->
                 emailValue = newText
             },
-            placeholder = { Text(text = stringResource(R.string.email)) },
-            shape = RoundedCornerShape(10.dp)
+            placeholderText = R.string.email
         )
 
         HorizontalSpacer()
 
-        OutlinedTextField(
+        OutlinedPasswordInput(
             modifier = Modifier.fillMaxWidth(),
             value = passwordValue,
             onValueChange = { newText ->
                 passwordValue = newText
             },
-            placeholder = { Text(text = stringResource(R.string.password)) },
-            shape = RoundedCornerShape(10.dp),
-            trailingIcon = {
-                IconButton(onClick = { showPassword = !showPassword }) {
-                    Icon(
-                        imageVector = getCorrectPasswordImage(showPassword),
-                        contentDescription = getCorrectPasswordDescription(showPassword)
-                    )
-                }
-            },
-            visualTransformation = getCorrectPasswordTransformation(showPassword)
-
+            showPassword = showPassword,
+            placeholderText = R.string.password,
+            onIconClick = { showPassword = !showPassword }
         )
 
         HorizontalSpacer()
@@ -164,24 +147,6 @@ fun LoginOptions() {
 
         HorizontalSpacer()
     }
-}
-
-@Composable
-private fun getCorrectPasswordTransformation(showPassword: Boolean) =
-    if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
-
-@Composable
-private fun getCorrectPasswordDescription(showPassword: Boolean) = if (showPassword) {
-    stringResource(R.string.show_password)
-} else {
-    stringResource(R.string.hide_password)
-}
-
-@Composable
-private fun getCorrectPasswordImage(showPassword: Boolean) = if (showPassword) {
-    Icons.Outlined.VisibilityOff
-} else {
-    Icons.Outlined.Visibility
 }
 
 @Preview(showBackground = true)
