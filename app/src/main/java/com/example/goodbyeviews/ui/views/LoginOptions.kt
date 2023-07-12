@@ -1,13 +1,10 @@
 package com.example.goodbyeviews.ui.views
 
-import androidx.compose.foundation.layout.Arrangement
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -80,22 +77,12 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        Row(
+        TextWithClickablePart(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            TextLabel(
-                textId = R.string.not_a_member,
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            TextLabel(
-                textId = R.string.register_now,
-                fontWeight = FontWeight.Bold,
-                textColor = Color.Blue
-            )
-        }
+            regularText = R.string.not_a_member,
+            clickableText = R.string.register_now,
+            onClick = { tag -> Log.d("taggg", "clickedTag = $tag") }
+        )
 
         HorizontalDivider()
 
