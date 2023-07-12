@@ -9,10 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -79,20 +75,11 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        Button(
+        ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
-            shape = CutCornerShape(10),
-            elevation = ButtonDefaults.buttonElevation(
-                defaultElevation = 10.dp,
-                pressedElevation = 15.dp,
-                disabledElevation = 0.dp
-            ),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Blue
-            ),
-            onClick = { }) {
-            Text(text = stringResource(R.string.login))
-        }
+            text = R.string.login,
+            onClick = { }
+        )
 
         HorizontalSpacer()
 
@@ -103,7 +90,9 @@ fun LoginOptions() {
             TextLabel(
                 textId = R.string.not_a_member,
             )
+
             Spacer(modifier = Modifier.width(8.dp))
+
             TextLabel(
                 textId = R.string.register_now,
                 fontWeight = FontWeight.Bold,
