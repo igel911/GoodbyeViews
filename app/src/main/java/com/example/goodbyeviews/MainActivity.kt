@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.views.MainScreen
+import com.example.goodbyeviews.ui.views.SignUpScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    //MainScreen()
+                    SignUpScreen()
                 }
             }
         }

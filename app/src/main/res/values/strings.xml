@@ -14,4 +14,10 @@
     <string name="not_a_member">"Not a member?"</string>
     <string name="register_now">"Register now"</string>
     <string name="empty">""</string>
+    <string name="sign_up">Sign up</string>
+    <string name="create_account">Create an account to get started </string>
+    <string name="name">Name</string>
+    <string name="email_hint">name@email.com</string>
+    <string name="password_hint">Create a password</string>
+    <string name="password_confirm_hint">Confirm a password</string>
 </resources>
