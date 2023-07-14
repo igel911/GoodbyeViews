@@ -20,4 +20,8 @@
     <string name="email_hint">name@email.com</string>
     <string name="password_hint">Create a password</string>
     <string name="password_confirm_hint">Confirm a password</string>
+    <string name="i_read">I\'ve read and agree with the</string>
+    <string name="terms_conditions">Terms and Conditions</string>
+    <string name="and_the"> and the</string>
+    <string name="privacy_policy">Privacy Policy.</string>
 </resources>

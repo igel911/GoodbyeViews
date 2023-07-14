@@ -1,5 +1,6 @@
 package com.example.goodbyeviews.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,6 +32,7 @@ fun SignUpScreen() {
         var emailValue by remember { mutableStateOf("") }
         var passwordValue by remember { mutableStateOf("") }
         var confirmPasswordValue by remember { mutableStateOf("") }
+        var checkBoxValue by remember { mutableStateOf(false) }
 
         HorizontalSpacer()
 
@@ -91,6 +93,21 @@ fun SignUpScreen() {
                 confirmPasswordValue = newText
             },
             placeholderText = R.string.password_confirm_hint
+        )
+
+        HorizontalSpacer()
+
+        CheckBoxWithLabel(
+            checked = checkBoxValue,
+            onCheckedChange = { value ->
+                checkBoxValue = value
+            },
+            firstRegularText = R.string.i_read,
+            firstClickableText = R.string.terms_conditions,
+            onFirstTextClick = { text -> Log.d("taggg", "clickedText = $text") },
+            secondRegularText = R.string.and_the,
+            secondClickableText = R.string.privacy_policy,
+            onSecondTextClick = { text -> Log.d("taggg", "clickedText = $text") }
         )
     }
 }

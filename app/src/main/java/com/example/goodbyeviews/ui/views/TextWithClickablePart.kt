@@ -40,7 +40,7 @@ fun TextWithClickablePart(
 
         pushStringAnnotation(
             tag = TAG,
-            annotation = TAG
+            annotation = stringResource(clickableText)
         )
 
         withStyle(
@@ -66,7 +66,7 @@ fun TextWithClickablePart(
                 start = offset,
                 end = offset
             ).firstOrNull()?.let { annotation ->
-                onClick.invoke(annotation.tag)
+                onClick.invoke(annotation.item)
             }
         }
     )

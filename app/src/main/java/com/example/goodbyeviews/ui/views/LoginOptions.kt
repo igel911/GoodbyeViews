@@ -81,7 +81,7 @@ fun LoginOptions() {
             modifier = Modifier.fillMaxWidth(),
             regularText = R.string.not_a_member,
             clickableText = R.string.register_now,
-            onClick = { tag -> Log.d("taggg", "clickedTag = $tag") }
+            onClick = { text -> Log.d("taggg", "clickedText = $text") }
         )
 
         HorizontalDivider()
