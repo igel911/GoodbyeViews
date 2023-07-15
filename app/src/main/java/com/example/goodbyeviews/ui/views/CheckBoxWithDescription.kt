@@ -13,7 +13,7 @@ import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
-fun CheckBoxWithLabel(
+fun CheckBoxWithDescription(
     checked: Boolean = false,
     onCheckedChange: ((Boolean) -> Unit) = {},
     @StringRes firstRegularText: Int = R.string.empty,
@@ -23,7 +23,7 @@ fun CheckBoxWithLabel(
     @StringRes secondClickableText: Int = R.string.empty,
     onSecondTextClick: (String) -> Unit = { }
 ) {
-    Row() {
+    Row {
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange,
@@ -32,7 +32,7 @@ fun CheckBoxWithLabel(
             colors = CheckboxDefaults.colors()
         )
 
-        Column() {
+        Column {
             TextWithClickablePart(
                 regularText = firstRegularText,
                 clickableText = firstClickableText,
@@ -50,9 +50,9 @@ fun CheckBoxWithLabel(
 
 @Preview(showBackground = true)
 @Composable
-fun CheckBoxWithLabelPreview() {
+fun CheckBoxWithDescriptionPreview() {
     GoodbyeViewsTheme {
-        CheckBoxWithLabel(
+        CheckBoxWithDescription(
             firstRegularText = R.string.i_read,
             firstClickableText = R.string.terms_conditions,
             onFirstTextClick = { text -> Log.d("taggg", "clickedText = $text") },

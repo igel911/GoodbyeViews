@@ -14,8 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
+import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
 fun OutlinedPasswordInput(
@@ -53,4 +55,15 @@ private fun getCorrectPasswordImage(showPassword: Boolean) = if (showPassword) {
     Icons.Outlined.VisibilityOff
 } else {
     Icons.Outlined.Visibility
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OutlinedPasswordInputPreview() {
+    GoodbyeViewsTheme {
+        OutlinedPasswordInput(
+            value = "abc",
+            onValueChange = { }
+        )
+    }
 }

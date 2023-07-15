@@ -8,10 +8,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.goodbyeviews.R
+import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
-fun TextLabel(
+fun Title(
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Center,
     @StringRes textId: Int,
@@ -27,4 +30,12 @@ fun TextLabel(
         fontWeight = fontWeight,
         color = textColor
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TitlePreview() {
+    GoodbyeViewsTheme {
+        Title(textId = R.string.welcome)
+    }
 }

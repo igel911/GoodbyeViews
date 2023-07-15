@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
+import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
-fun OutlinedPasswordInputWithLabel(
+fun OutlinedTextInputWithTitle(
     modifier: Modifier = Modifier,
     @StringRes labelText: Int = R.string.empty,
     labelTextSize: Int = 12,
@@ -25,7 +27,7 @@ fun OutlinedPasswordInputWithLabel(
     shape: Shape = RoundedCornerShape(10.dp)
 ) {
     Column(modifier = modifier) {
-        TextLabel(
+        Title(
             textId = labelText,
             fontSize = labelTextSize,
             fontWeight = labelFontWeight,
@@ -34,12 +36,23 @@ fun OutlinedPasswordInputWithLabel(
 
         HorizontalSpacer()
 
-        OutlinedPasswordInput(
+        OutlinedTextInput(
             modifier = Modifier.fillMaxWidth(),
             value = value,
             onValueChange = onValueChange,
             placeholderText = placeholderText,
             shape = shape
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OutlinedTextInputWithTitlePreview() {
+    GoodbyeViewsTheme {
+        OutlinedTextInputWithTitle(
+            value = "abc",
+            onValueChange = { }
         )
     }
 }

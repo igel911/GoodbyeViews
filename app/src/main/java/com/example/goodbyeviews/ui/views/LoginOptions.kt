@@ -31,7 +31,7 @@ fun LoginOptions() {
     ) {
         HorizontalSpacer()
 
-        TextLabel(
+        Title(
             textId = R.string.welcome,
             fontSize = 24,
             fontWeight = FontWeight.Bold
@@ -61,7 +61,7 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        TextLabel(
+        Title(
             textId = R.string.forgot_password,
             fontWeight = FontWeight.Bold,
             textColor = Color.Blue
@@ -86,7 +86,7 @@ fun LoginOptions() {
 
         HorizontalDivider()
 
-        TextLabel(
+        Title(
             modifier = Modifier.fillMaxWidth(),
             textId = R.string.continue_with
         )

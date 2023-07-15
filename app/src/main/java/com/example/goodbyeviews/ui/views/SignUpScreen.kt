@@ -36,7 +36,7 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        TextLabel(
+        Title(
             textId = R.string.sign_up,
             fontSize = 16,
             fontWeight = FontWeight.Bold
@@ -44,13 +44,13 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        TextLabel(
+        Title(
             textId = R.string.create_account
         )
 
         HorizontalSpacer()
 
-        OutlinedTextInputWithLabel(
+        OutlinedTextInputWithTitle(
             labelText = R.string.name,
             labelFontWeight = FontWeight.Bold,
             value = nameValue,
@@ -62,7 +62,7 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        OutlinedTextInputWithLabel(
+        OutlinedTextInputWithTitle(
             labelText = R.string.email,
             labelFontWeight = FontWeight.Bold,
             value = emailValue,
@@ -74,9 +74,9 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        OutlinedPasswordInputWithLabel(
-            labelText = R.string.password,
-            labelFontWeight = FontWeight.Bold,
+        OutlinedPasswordInputWithTitle(
+            titleText = R.string.password,
+            titleFontWeight = FontWeight.Bold,
             value = passwordValue,
             onValueChange = { value ->
                 passwordValue = value
@@ -97,7 +97,7 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        CheckBoxWithLabel(
+        CheckBoxWithDescription(
             checked = checkBoxValue,
             onCheckedChange = { value ->
                 checkBoxValue = value
