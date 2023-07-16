@@ -1,6 +1,5 @@
 package com.example.goodbyeviews.ui.views
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,31 +16,24 @@ import androidx.compose.ui.unit.sp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
-const val TAG = "TAG"
-
 @Composable
-fun TextWithClickablePart(
+fun TitleRegisterNow(
     modifier: Modifier = Modifier,
-    @StringRes regularText: Int,
     regularColor: Color = Color.Black,
-    @StringRes clickableText: Int,
     clickableColor: Color = Color.Blue,
     fontSize: Int = 12,
-    textAlign: TextAlign = TextAlign.Center,
-    onClick: (String) -> Unit = { }
+    onRegisterNowClick: () -> Unit = { }
 ) {
+    val notAMember = stringResource(id = R.string.not_a_member)
+    val registerNow = stringResource(id = R.string.register_now)
+
     val annotatedText = buildAnnotatedString {
         withStyle(
             style = SpanStyle(color = regularColor, fontSize = fontSize.sp)
         ) {
-            append(stringResource(regularText))
+            append(notAMember)
             append(" ")
         }
-
-        pushStringAnnotation(
-            tag = TAG,
-            annotation = stringResource(clickableText)
-        )
 
         withStyle(
             style = SpanStyle(
@@ -50,35 +42,32 @@ fun TextWithClickablePart(
                 fontWeight = FontWeight.Bold
             )
         ) {
-            append(stringResource(clickableText))
+            pushStringAnnotation(
+                tag = registerNow,
+                annotation = registerNow
+            )
+            append(registerNow)
         }
-
-        pop()
     }
 
     ClickableText(
         modifier = modifier,
         text = annotatedText,
-        style = TextStyle(textAlign = textAlign),
+        style = TextStyle(textAlign = TextAlign.Center),
         onClick = { offset ->
             annotatedText.getStringAnnotations(
-                tag = TAG,
+                tag = registerNow,
                 start = offset,
                 end = offset
-            ).firstOrNull()?.let { annotation ->
-                onClick.invoke(annotation.item)
-            }
+            ).firstOrNull()?.let { onRegisterNowClick() }
         }
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun TextWithClickablePartPreview() {
+fun TitleRegisterNowPreview() {
     GoodbyeViewsTheme {
-        TextWithClickablePart(
-            regularText = R.string.not_a_member,
-            clickableText = R.string.register_now
-        )
+        TitleRegisterNow()
     }
 }

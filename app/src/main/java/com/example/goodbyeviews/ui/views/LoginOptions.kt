@@ -77,11 +77,9 @@ fun LoginOptions() {
 
         HorizontalSpacer()
 
-        TextWithClickablePart(
+        TitleRegisterNow(
             modifier = Modifier.fillMaxWidth(),
-            regularText = R.string.not_a_member,
-            clickableText = R.string.register_now,
-            onClick = { text -> Log.d("taggg", "clickedText = $text") }
+            onRegisterNowClick = { Log.d("taggg", "onRegisterNowClick") }
         )
 
         HorizontalDivider()

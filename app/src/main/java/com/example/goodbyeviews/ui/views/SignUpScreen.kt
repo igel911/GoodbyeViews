@@ -97,17 +97,13 @@ fun SignUpScreen() {
 
         HorizontalSpacer()
 
-        CheckBoxWithDescription(
+        CheckBoxAgreement(
             checked = checkBoxValue,
             onCheckedChange = { value ->
                 checkBoxValue = value
             },
-            firstRegularText = R.string.i_read,
-            firstClickableText = R.string.terms_conditions,
-            onFirstTextClick = { text -> Log.d("taggg", "clickedText = $text") },
-            secondRegularText = R.string.and_the,
-            secondClickableText = R.string.privacy_policy,
-            onSecondTextClick = { text -> Log.d("taggg", "clickedText = $text") }
+            onTermsAndConditionClick = { Log.d("taggg", "onTermsAndConditionClick") },
+            onPrivacyPolicyClick = { Log.d("taggg", "onPrivacyPolicyClick") }
         )
     }
 }
