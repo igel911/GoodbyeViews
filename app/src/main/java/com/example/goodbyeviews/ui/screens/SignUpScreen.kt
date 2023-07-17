@@ -1,4 +1,4 @@
-package com.example.goodbyeviews.ui.views
+package com.example.goodbyeviews.ui.screens
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -19,6 +19,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.views.CheckBoxAgreement
+import com.example.goodbyeviews.ui.views.HorizontalSpacer
+import com.example.goodbyeviews.ui.views.OutlinedPasswordInput
+import com.example.goodbyeviews.ui.views.OutlinedPasswordInputWithTitle
+import com.example.goodbyeviews.ui.views.OutlinedTextInputWithTitle
+import com.example.goodbyeviews.ui.views.Title
 
 @Composable
 fun SignUpScreen() {

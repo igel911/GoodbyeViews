@@ -18,8 +18,9 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 @Composable
 fun Title(
     modifier: Modifier = Modifier,
-    textAlign: TextAlign = TextAlign.Center,
-    @StringRes textId: Int,
+    textAlign: TextAlign = TextAlign.Start,
+    @StringRes textId: Int = R.string.empty,
+    text: String? = null,
     fontSize: Int,
     fontWeight: FontWeight = FontWeight.Medium,
     textColor: Color = Color.Black
@@ -28,6 +29,7 @@ fun Title(
         modifier = modifier,
         textAlign = textAlign,
         textId = textId,
+        text = text,
         fontSize = fontSize.dp,
         fontWeight = fontWeight,
         textColor = textColor
@@ -38,7 +40,8 @@ fun Title(
 fun Title(
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Start,
-    @StringRes textId: Int,
+    @StringRes textId: Int = R.string.empty,
+    text: String? = null,
     fontSize: Dp = 12.dp,
     fontWeight: FontWeight = FontWeight.Medium,
     textColor: Color = Color.Black
@@ -46,12 +49,19 @@ fun Title(
     Text(
         modifier = modifier,
         textAlign = textAlign,
-        text = stringResource(textId),
+        text = getText(textId = textId, text = text),
         fontSize = fontSize.value.sp,
         fontWeight = fontWeight,
         color = textColor
     )
 }
+
+@Composable
+private fun getText(
+    @StringRes textId: Int,
+    text: String?
+): String =
+    if (text.isNullOrBlank()) stringResource(textId) else text
 
 @Preview(showBackground = true)
 @Composable

@@ -2,6 +2,7 @@ package com.example.goodbyeviews.ui.views
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
@@ -12,6 +13,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,7 +28,13 @@ fun OutlinedPasswordInput(
     value: String,
     onValueChange: (String) -> Unit,
     @StringRes placeholderText: Int = R.string.empty,
-    shape: Shape = RoundedCornerShape(10.dp)
+    shape: Shape = RoundedCornerShape(10.dp),
+    singleLine: Boolean = true,
+    maxLines: Int = 1,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(
+        keyboardType = KeyboardType.Number,
+        imeAction = ImeAction.None
+    )
 ) {
     var showPassword by remember { mutableStateOf(false) }
 
@@ -38,7 +47,10 @@ fun OutlinedPasswordInput(
         icon = getCorrectPasswordImage(showPassword),
         shape = shape,
         contentDescription = getCorrectPasswordDescription(showPassword),
-        onIconClick = { showPassword = !showPassword }
+        onIconClick = { showPassword = !showPassword },
+        singleLine = singleLine,
+        maxLines = maxLines,
+        keyboardOptions = keyboardOptions
     )
 }
 

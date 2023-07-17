@@ -1,4 +1,4 @@
-package com.example.goodbyeviews.ui.views
+package com.example.goodbyeviews.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.views.LoginOptions
 
 @Composable
 fun MainScreen() {
