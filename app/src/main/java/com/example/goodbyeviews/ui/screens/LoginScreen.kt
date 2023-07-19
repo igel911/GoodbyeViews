@@ -18,7 +18,9 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.views.LoginOptions
 
 @Composable
-fun MainScreen() {
+fun LoginScreen(
+    navigateForward: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -35,14 +37,14 @@ fun MainScreen() {
                 text = "Here should be a picture but I messed up :("
             )
         }
-        LoginOptions()
+        LoginOptions(navigateForward)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun MainScreenPreview() {
+fun LoginScreenPreview() {
     GoodbyeViewsTheme {
-        MainScreen()
+        LoginScreen { }
     }
 }

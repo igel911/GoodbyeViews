@@ -21,13 +21,17 @@ import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.views.CheckBoxAgreement
 import com.example.goodbyeviews.ui.views.HorizontalSpacer
+import com.example.goodbyeviews.ui.views.NavigationControls
 import com.example.goodbyeviews.ui.views.OutlinedPasswordInput
 import com.example.goodbyeviews.ui.views.OutlinedPasswordInputWithTitle
 import com.example.goodbyeviews.ui.views.OutlinedTextInputWithTitle
 import com.example.goodbyeviews.ui.views.Title
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    navigateBack: () -> Unit,
+    navigateForward: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -111,6 +115,13 @@ fun SignUpScreen() {
             onTermsAndConditionClick = { Log.d("taggg", "onTermsAndConditionClick") },
             onPrivacyPolicyClick = { Log.d("taggg", "onPrivacyPolicyClick") }
         )
+
+        HorizontalSpacer()
+
+        NavigationControls(
+            navigateBack = navigateBack,
+            navigateForward = navigateForward
+        )
     }
 }
 
@@ -118,6 +129,9 @@ fun SignUpScreen() {
 @Composable
 fun SignUpScreenPreview() {
     GoodbyeViewsTheme {
-        SignUpScreen()
+        SignUpScreen(
+            navigateBack = { },
+        navigateForward = { }
+        )
     }
 }

@@ -3,7 +3,6 @@ package com.example.goodbyeviews.ui.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,13 +16,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
-import com.example.goodbyeviews.ui.views.ButtonWithTitle
 import com.example.goodbyeviews.ui.views.HorizontalSpacer
+import com.example.goodbyeviews.ui.views.NavigationControls
 import com.example.goodbyeviews.ui.views.SmsCodeInput
 import com.example.goodbyeviews.ui.views.Title
 
 @Composable
-fun EnterCodeScreen() {
+fun EnterCodeScreen(
+    navigateBack: () -> Unit,
+    navigateForward: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,10 +60,9 @@ fun EnterCodeScreen() {
 
         HorizontalSpacer()
 
-        ButtonWithTitle(
-            modifier = Modifier.fillMaxWidth(),
-            text = R.string.continue_title,
-            onClick = { }
+        NavigationControls(
+            navigateBack = navigateBack,
+            navigateForward = navigateForward
         )
     }
 }
@@ -70,6 +71,9 @@ fun EnterCodeScreen() {
 @Composable
 fun EnterCodeScreenPreview() {
     GoodbyeViewsTheme {
-        EnterCodeScreen()
+        EnterCodeScreen(
+            navigateBack = { },
+            navigateForward = { }
+        )
     }
 }
