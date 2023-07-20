@@ -1,4 +1,4 @@
-package com.example.goodbyeviews.ui.screens
+package com.example.goodbyeviews.ui.screens.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

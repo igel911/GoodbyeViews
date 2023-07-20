@@ -38,7 +38,7 @@ fun OutlinedTextInput(
     singleLine: Boolean = true,
     maxLines: Int = 1,
     keyboardOptions: KeyboardOptions = KeyboardOptions(
-        keyboardType = KeyboardType.Number,
+        keyboardType = KeyboardType.Text,
         imeAction = ImeAction.None
     ),
     textStyle: TextStyle = TextStyle(textAlign = TextAlign.Start)

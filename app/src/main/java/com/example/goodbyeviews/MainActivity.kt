@@ -13,7 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.goodbyeviews.ui.screens.EnterCodeScreen
-import com.example.goodbyeviews.ui.screens.LoginScreen
+import com.example.goodbyeviews.ui.screens.login.LoginScreen
 import com.example.goodbyeviews.ui.screens.SignUpScreen
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 

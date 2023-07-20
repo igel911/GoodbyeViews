@@ -32,7 +32,7 @@ fun OutlinedPasswordInput(
     singleLine: Boolean = true,
     maxLines: Int = 1,
     keyboardOptions: KeyboardOptions = KeyboardOptions(
-        keyboardType = KeyboardType.Number,
+        keyboardType = KeyboardType.Password,
         imeAction = ImeAction.None
     )
 ) {
