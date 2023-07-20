@@ -21,7 +21,7 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
 fun LoginOptions(
-    navigateForward: () -> Unit
+    navigateForward: (String) -> Unit
 ) {
     var emailValue by remember { mutableStateOf("") }
     var passwordValue by remember { mutableStateOf("") }
@@ -74,7 +74,7 @@ fun LoginOptions(
         ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
             text = R.string.login,
-            onClick = { navigateForward() }
+            onClick = { navigateForward(emailValue) }
         )
 
         HorizontalSpacer()

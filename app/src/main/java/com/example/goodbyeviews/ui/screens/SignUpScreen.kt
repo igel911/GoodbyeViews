@@ -29,6 +29,7 @@ import com.example.goodbyeviews.ui.views.Title
 
 @Composable
 fun SignUpScreen(
+    userEmail: String? = null,
     navigateBack: () -> Unit,
     navigateForward: () -> Unit
 ) {

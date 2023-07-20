@@ -7,13 +7,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.goodbyeviews.ui.screens.EnterCodeScreen
 import com.example.goodbyeviews.ui.screens.LoginScreen
-import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.screens.SignUpScreen
+import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,18 +27,33 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+                    var emailValue = ""
+
                     NavHost(navController = navController, startDestination = "login") {
                         composable(route = "login") {
-                            LoginScreen { navController.navigate("signUp") }
+                            LoginScreen { email ->
+                                emailValue = email
+                                navController.navigate("signUp/$emailValue")
+                            }
                         }
-                        composable(route = "signUp") {
+
+                        composable(
+                            route = "signUp/{userEmail}",
+                            arguments = getSignUpArgs()
+                        ) { backStackEntry ->
                             SignUpScreen(
+                                backStackEntry.arguments?.getString("userEmail"),
                                 navigateBack = { navController.navigateUp() },
-                                navigateForward = { navController.navigate("enterCode") }
+                                navigateForward = { navController.navigate("enterCode/$emailValue") }
                             )
                         }
-                        composable(route = "enterCode") {
+
+                        composable(
+                            route = "enterCode/{userEmail}",
+                            arguments = getEnterCodeArgs()
+                        ) { backStackEntry ->
                             EnterCodeScreen(
+                                backStackEntry.arguments?.getString("userEmail"),
                                 navigateBack = { navController.navigateUp() },
                                 navigateForward = { navController.navigate("") }
                             )
@@ -46,4 +63,8 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun getSignUpArgs() = listOf(navArgument("userEmail") { type = NavType.StringType })
+
+    private fun getEnterCodeArgs() = listOf(navArgument("userEmail") { type = NavType.StringType })
 }

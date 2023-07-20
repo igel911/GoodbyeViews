@@ -23,6 +23,7 @@ import com.example.goodbyeviews.ui.views.Title
 
 @Composable
 fun EnterCodeScreen(
+    userEmail: String? = null,
     navigateBack: () -> Unit,
     navigateForward: () -> Unit
 ) {
@@ -44,7 +45,7 @@ fun EnterCodeScreen(
         HorizontalSpacer(spacerHeight = 2)
 
         Title(
-            text = stringResource(R.string.code_was_sent, "some@mail.com")
+            text = stringResource(R.string.code_was_sent, userEmail.toString())
         )
 
         HorizontalSpacer(spacerHeight = 40)

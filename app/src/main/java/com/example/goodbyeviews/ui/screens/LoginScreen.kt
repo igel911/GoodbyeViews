@@ -20,7 +20,7 @@ import com.example.goodbyeviews.ui.views.LoginOptions
 
 @Composable
 fun LoginScreen(
-    navigateForward: () -> Unit
+    navigateForward: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
