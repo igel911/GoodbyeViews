@@ -1,7 +1,8 @@
-package com.example.goodbyeviews.ui.screens
+package com.example.goodbyeviews.ui.screens.enter_code
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -14,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.views.HorizontalSpacer
@@ -27,6 +29,8 @@ fun EnterCodeScreen(
     navigateBack: () -> Unit,
     navigateForward: () -> Unit
 ) {
+    val viewModel = viewModel { EnterCodeViewModel() }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,7 +54,16 @@ fun EnterCodeScreen(
 
         HorizontalSpacer(spacerHeight = 40)
 
-        SmsCodeInput()
+        SmsCodeInput(
+            firstValue = viewModel.firstValue,
+            onFirstValueChanged = viewModel::updateFirstValue,
+            secondValue = viewModel.secondValue,
+            onSecondValueChanged = viewModel::updateSecondValue,
+            thirdValue = viewModel.thirdValue,
+            onThirdValueChanged = viewModel::updateThirdValue,
+            fourthValue = viewModel.fourthValue,
+            onFourthValueChanged = viewModel::updateFourthValue
+        )
 
         HorizontalSpacer()
 
@@ -59,12 +72,15 @@ fun EnterCodeScreen(
             textColor = Color.Blue
         )
 
-        HorizontalSpacer()
+        Spacer(modifier = Modifier.weight(1f))
 
         NavigationControls(
             navigateBack = navigateBack,
-            navigateForward = navigateForward
+            navigateForward = navigateForward,
+            isButtonNextEnabled = viewModel.validationState.isValid()
         )
+
+        HorizontalSpacer()
     }
 }
 

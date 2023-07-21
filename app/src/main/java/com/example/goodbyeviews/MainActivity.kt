@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.goodbyeviews.ui.screens.EnterCodeScreen
+import com.example.goodbyeviews.ui.screens.enter_code.EnterCodeScreen
 import com.example.goodbyeviews.ui.screens.login.LoginScreen
 import com.example.goodbyeviews.ui.screens.sign_up.SignUpScreen
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                             EnterCodeScreen(
                                 backStackEntry.arguments?.getString("userEmail"),
                                 navigateBack = { navController.navigateUp() },
-                                navigateForward = { navController.navigate("") }
+                                navigateForward = {  }
                             )
                         }
                     }

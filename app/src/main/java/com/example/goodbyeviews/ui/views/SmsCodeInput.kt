@@ -11,10 +11,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -31,11 +28,16 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun SmsCodeInput() {
-    var valueFirst by remember { mutableStateOf("") }
-    var valueSecond by remember { mutableStateOf("") }
-    var valueThird by remember { mutableStateOf("") }
-    var valueFourth by remember { mutableStateOf("") }
+fun SmsCodeInput(
+    firstValue: String,
+    onFirstValueChanged: (String) -> Unit,
+    secondValue: String,
+    onSecondValueChanged: (String) -> Unit,
+    thirdValue: String,
+    onThirdValueChanged: (String) -> Unit,
+    fourthValue: String,
+    onFourthValueChanged: (String) -> Unit
+) {
     val (secondFocus, thirdFocus, fourthFocus) = remember {
         FocusRequester.createRefs()
     }
@@ -57,9 +59,9 @@ fun SmsCodeInput() {
             OutlinedTextField(
                 modifier = Modifier.requiredWidth(48.dp),
                 singleLine = true,
-                value = valueFirst,
+                value = firstValue,
                 onValueChange = { value ->
-                    valueFirst = value
+                    onFirstValueChanged(value)
                     if (value.length == 1) {
                         secondFocus.requestFocus()
                     }
@@ -75,9 +77,9 @@ fun SmsCodeInput() {
                     .requiredWidth(48.dp)
                     .focusRequester(secondFocus),
                 singleLine = true,
-                value = valueSecond,
+                value = secondValue,
                 onValueChange = { value ->
-                    valueSecond = value
+                    onSecondValueChanged(value)
                     if (value.length == 1) {
                         thirdFocus.requestFocus()
                     }
@@ -93,9 +95,9 @@ fun SmsCodeInput() {
                     .requiredWidth(48.dp)
                     .focusRequester(thirdFocus),
                 singleLine = true,
-                value = valueThird,
+                value = thirdValue,
                 onValueChange = { value ->
-                    valueThird = value
+                    onThirdValueChanged(value)
                     if (value.length == 1) {
                         fourthFocus.requestFocus()
                     }
@@ -111,9 +113,12 @@ fun SmsCodeInput() {
                     .requiredWidth(48.dp)
                     .focusRequester(fourthFocus),
                 singleLine = true,
-                value = valueFourth,
+                value = fourthValue,
                 onValueChange = { value ->
-                    valueFourth = value
+                    onFourthValueChanged(value)
+                    if (value.length == 1) {
+
+                    }
                 },
                 shape = RoundedCornerShape(10.dp),
                 textStyle = TextStyle(textAlign = TextAlign.Center),
@@ -128,6 +133,15 @@ fun SmsCodeInput() {
 @Composable
 fun SmsCodeInputPreview() {
     GoodbyeViewsTheme {
-        SmsCodeInput()
+        SmsCodeInput(
+            firstValue = "asd",
+            onFirstValueChanged = {},
+            secondValue = "asd",
+            onSecondValueChanged = {},
+            thirdValue = "asd",
+            onThirdValueChanged = {},
+            fourthValue = "asd",
+            onFourthValueChanged = {}
+        )
     }
 }
