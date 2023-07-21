@@ -42,7 +42,7 @@ fun LoginOptions(
         OutlinedTextInput(
             modifier = Modifier.fillMaxWidth(),
             value = viewModel.emailValue,
-            onValueChange = viewModel::updateEmailValue,
+            onValueChange = viewModel::updateLoginValue,
             placeholderText = R.string.email
         )
 
@@ -69,7 +69,8 @@ fun LoginOptions(
         ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
             text = R.string.login,
-            onClick = { navigateForward() }
+            onClick = { navigateForward() },
+            isButtonEnabled = viewModel.validationState.isValid()
         )
 
         HorizontalSpacer()
