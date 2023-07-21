@@ -30,6 +30,7 @@ fun ButtonWithTitle(
     colors: ButtonColors = ButtonDefaults.buttonColors(
         containerColor = Color.Blue
     ),
+    isButtonEnabled: Boolean = true,
     onClick: () -> Unit = { }
 ) {
     Button(
@@ -37,6 +38,7 @@ fun ButtonWithTitle(
         shape = shape,
         elevation = elevation,
         colors = colors,
+        enabled = isButtonEnabled,
         onClick = onClick
     ) {
         Text(text = text)
@@ -56,6 +58,7 @@ fun ButtonWithTitle(
     colors: ButtonColors = ButtonDefaults.buttonColors(
         containerColor = Color.Blue
     ),
+    isButtonEnabled: Boolean = true,
     onClick: () -> Unit = { }
     ) {
     ButtonWithTitle(
@@ -64,6 +67,7 @@ fun ButtonWithTitle(
         shape = shape,
         elevation = elevation,
         colors = colors,
+        isButtonEnabled = isButtonEnabled,
         onClick = onClick
     )
 }

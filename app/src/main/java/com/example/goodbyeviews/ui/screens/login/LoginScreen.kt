@@ -20,7 +20,8 @@ import com.example.goodbyeviews.ui.views.LoginOptions
 
 @Composable
 fun LoginScreen(
-    navigateForward: (String) -> Unit
+    navigateForward: () -> Unit,
+    navigateToSignUp: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -39,7 +40,10 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxSize()
             )
         }
-        LoginOptions(navigateForward)
+        LoginOptions(
+            navigateForward = navigateForward,
+            navigateToSignUp = navigateToSignUp
+        )
     }
 }
 
@@ -47,6 +51,6 @@ fun LoginScreen(
 @Composable
 fun LoginScreenPreview() {
     GoodbyeViewsTheme {
-        LoginScreen { }
+        LoginScreen({ }, { })
     }
 }

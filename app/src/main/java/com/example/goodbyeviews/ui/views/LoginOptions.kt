@@ -19,7 +19,8 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
 fun LoginOptions(
-    navigateForward: (String) -> Unit
+    navigateForward: () -> Unit,
+    navigateToSignUp: () -> Unit
 ) {
     val viewModel = viewModel { LoginViewModel() }
 
@@ -59,7 +60,8 @@ fun LoginOptions(
         Title(
             textId = R.string.forgot_password,
             fontWeight = FontWeight.Bold,
-            textColor = Color.Blue
+            textColor = Color.Blue,
+            onClick = { navigateToSignUp() }
         )
 
         HorizontalSpacer()
@@ -67,7 +69,7 @@ fun LoginOptions(
         ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
             text = R.string.login,
-            onClick = { navigateForward(viewModel.emailValue) }
+            onClick = { navigateForward() }
         )
 
         HorizontalSpacer()
@@ -96,6 +98,6 @@ fun LoginOptions(
 @Composable
 fun LoginOptionsPreview() {
     GoodbyeViewsTheme {
-        LoginOptions { }
+        LoginOptions({ }, { })
     }
 }

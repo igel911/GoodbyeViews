@@ -17,7 +17,8 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 @Composable
 fun NavigationControls(
     navigateBack: () -> Unit,
-    navigateForward: () -> Unit
+    navigateForward: () -> Unit,
+    isButtonNextEnabled: Boolean = true
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -32,6 +33,7 @@ fun NavigationControls(
         ButtonWithTitle(
             modifier = Modifier.height(40.dp).weight(1F),
             text = R.string.continue_title,
+            isButtonEnabled = isButtonNextEnabled,
             onClick = { navigateForward() }
         )
     }

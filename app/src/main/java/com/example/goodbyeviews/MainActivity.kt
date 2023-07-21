@@ -14,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.goodbyeviews.ui.screens.EnterCodeScreen
 import com.example.goodbyeviews.ui.screens.login.LoginScreen
-import com.example.goodbyeviews.ui.screens.SignUpScreen
+import com.example.goodbyeviews.ui.screens.sign_up.SignUpScreen
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,24 +27,23 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    var emailValue = ""
 
                     NavHost(navController = navController, startDestination = "login") {
                         composable(route = "login") {
-                            LoginScreen { email ->
-                                emailValue = email
-                                navController.navigate("signUp/$emailValue")
-                            }
+                            LoginScreen(
+                                navigateForward = {},
+                                navigateToSignUp = { navController.navigate("signUp") }
+                            )
                         }
 
                         composable(
-                            route = "signUp/{userEmail}",
-                            arguments = getSignUpArgs()
-                        ) { backStackEntry ->
+                            route = "signUp",
+                        ) {
                             SignUpScreen(
-                                backStackEntry.arguments?.getString("userEmail"),
                                 navigateBack = { navController.navigateUp() },
-                                navigateForward = { navController.navigate("enterCode/$emailValue") }
+                                navigateForward = { emailValue ->
+                                    navController.navigate("enterCode/$emailValue")
+                                }
                             )
                         }
 
@@ -63,8 +62,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-    private fun getSignUpArgs() = listOf(navArgument("userEmail") { type = NavType.StringType })
 
     private fun getEnterCodeArgs() = listOf(navArgument("userEmail") { type = NavType.StringType })
 }

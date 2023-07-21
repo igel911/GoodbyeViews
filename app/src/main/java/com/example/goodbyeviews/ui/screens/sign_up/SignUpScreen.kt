@@ -1,4 +1,4 @@
-package com.example.goodbyeviews.ui.screens
+package com.example.goodbyeviews.ui.screens.sign_up
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -9,14 +9,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.views.CheckBoxAgreement
@@ -29,21 +26,17 @@ import com.example.goodbyeviews.ui.views.Title
 
 @Composable
 fun SignUpScreen(
-    userEmail: String? = null,
     navigateBack: () -> Unit,
-    navigateForward: () -> Unit
+    navigateForward: (String) -> Unit
 ) {
+    val viewModel = viewModel { SignUpViewModel() }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(PaddingValues(start = 16.dp, end = 16.dp))
     ) {
-        var nameValue by remember { mutableStateOf("") }
-        var emailValue by remember { mutableStateOf("") }
-        var passwordValue by remember { mutableStateOf("") }
-        var confirmPasswordValue by remember { mutableStateOf("") }
-        var checkBoxValue by remember { mutableStateOf(false) }
 
         HorizontalSpacer()
 
@@ -64,10 +57,8 @@ fun SignUpScreen(
         OutlinedTextInputWithTitle(
             labelText = R.string.name,
             labelFontWeight = FontWeight.Bold,
-            value = nameValue,
-            onValueChange = { value ->
-                nameValue = value
-            },
+            value = viewModel.nameValue,
+            onValueChange = viewModel::updateNameValue,
             placeholderText = R.string.name
         )
 
@@ -76,10 +67,8 @@ fun SignUpScreen(
         OutlinedTextInputWithTitle(
             labelText = R.string.email,
             labelFontWeight = FontWeight.Bold,
-            value = emailValue,
-            onValueChange = { value ->
-                emailValue = value
-            },
+            value = viewModel.emailValue,
+            onValueChange = viewModel::updateEmailValue,
             placeholderText = R.string.email_hint
         )
 
@@ -88,10 +77,8 @@ fun SignUpScreen(
         OutlinedPasswordInputWithTitle(
             titleText = R.string.password,
             titleFontWeight = FontWeight.Bold,
-            value = passwordValue,
-            onValueChange = { value ->
-                passwordValue = value
-            },
+            value = viewModel.passwordValue,
+            onValueChange = viewModel::updatePasswordValue,
             placeholderText = R.string.password_hint
         )
 
@@ -99,20 +86,16 @@ fun SignUpScreen(
 
         OutlinedPasswordInput(
             modifier = Modifier.fillMaxWidth(),
-            value = confirmPasswordValue,
-            onValueChange = { newText ->
-                confirmPasswordValue = newText
-            },
+            value = viewModel.confirmPasswordValue,
+            onValueChange = viewModel::updateConfirmPasswordValue,
             placeholderText = R.string.password_confirm_hint
         )
 
         HorizontalSpacer()
 
         CheckBoxAgreement(
-            checked = checkBoxValue,
-            onCheckedChange = { value ->
-                checkBoxValue = value
-            },
+            checked = viewModel.checkBoxValue,
+            onCheckedChange = viewModel::updateCheckBoxValue,
             onTermsAndConditionClick = { Log.d("taggg", "onTermsAndConditionClick") },
             onPrivacyPolicyClick = { Log.d("taggg", "onPrivacyPolicyClick") }
         )
@@ -121,7 +104,8 @@ fun SignUpScreen(
 
         NavigationControls(
             navigateBack = navigateBack,
-            navigateForward = navigateForward
+            navigateForward = { navigateForward(viewModel.emailValue) },
+            isButtonNextEnabled = viewModel.validationState.isValid()
         )
     }
 }
@@ -132,7 +116,7 @@ fun SignUpScreenPreview() {
     GoodbyeViewsTheme {
         SignUpScreen(
             navigateBack = { },
-        navigateForward = { }
+            navigateForward = { }
         )
     }
 }
