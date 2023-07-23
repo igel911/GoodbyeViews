@@ -1,11 +1,11 @@
 package com.example.goodbyeviews.ui.views
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +32,7 @@ fun LoginOptions(
         HorizontalSpacer()
 
         Title(
+            modifier = Modifier.align(Alignment.Start),
             textId = R.string.welcome,
             fontSize = 24,
             fontWeight = FontWeight.Bold
@@ -58,10 +59,10 @@ fun LoginOptions(
         HorizontalSpacer()
 
         Title(
+            modifier = Modifier.align(Alignment.Start),
             textId = R.string.forgot_password,
             fontWeight = FontWeight.Bold,
-            textColor = Color.Blue,
-            onClick = { navigateToSignUp() }
+            textColor = Color.Blue
         )
 
         HorizontalSpacer()
@@ -76,20 +77,20 @@ fun LoginOptions(
         HorizontalSpacer()
 
         TitleRegisterNow(
-            modifier = Modifier.fillMaxWidth(),
-            onRegisterNowClick = { Log.d("taggg", "onRegisterNowClick") }
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            onRegisterNowClick = { navigateToSignUp() }
         )
 
         HorizontalDivider()
 
         Title(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
             textId = R.string.continue_with
         )
 
         HorizontalSpacer()
 
-        LoginVariants()
+        LoginVariants(modifier = Modifier.align(Alignment.CenterHorizontally))
 
         HorizontalSpacer()
     }

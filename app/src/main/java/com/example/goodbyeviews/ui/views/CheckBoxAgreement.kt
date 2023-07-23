@@ -77,19 +77,13 @@ fun CheckBoxAgreement(
             style = TextStyle(textAlign = TextAlign.Start),
             onClick = { offset ->
                 annotatedText.getStringAnnotations(
-                    tag = termsAndCondition,
                     start = offset,
                     end = offset
-                ).firstOrNull()?.let {
-                    onTermsAndConditionClick()
-                }
-
-                annotatedText.getStringAnnotations(
-                    tag = privacyPolicy,
-                    start = offset,
-                    end = offset
-                ).firstOrNull()?.let {
-                    onPrivacyPolicyClick()
+                ).firstOrNull()?.let { range ->
+                    when (range.tag) {
+                        termsAndCondition -> onTermsAndConditionClick()
+                        privacyPolicy -> onPrivacyPolicyClick()
+                    }
                 }
             }
         )

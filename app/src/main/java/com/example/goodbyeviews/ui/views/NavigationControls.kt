@@ -2,7 +2,6 @@ package com.example.goodbyeviews.ui.views
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -16,12 +15,13 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
 fun NavigationControls(
+    modifier: Modifier = Modifier,
     navigateBack: () -> Unit,
     navigateForward: () -> Unit,
     isButtonNextEnabled: Boolean = true
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         ImageButton(

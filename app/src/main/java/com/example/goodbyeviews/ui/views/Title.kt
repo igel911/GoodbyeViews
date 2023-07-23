@@ -1,7 +1,6 @@
 package com.example.goodbyeviews.ui.views
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.clickable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,8 +23,7 @@ fun Title(
     text: String? = null,
     fontSize: Int,
     fontWeight: FontWeight = FontWeight.Medium,
-    textColor: Color = Color.Black,
-    onClick: () -> Unit = {}
+    textColor: Color = Color.Black
 ) {
     Title(
         modifier = modifier,
@@ -34,8 +32,7 @@ fun Title(
         text = text,
         fontSize = fontSize.dp,
         fontWeight = fontWeight,
-        textColor = textColor,
-        onClick = onClick
+        textColor = textColor
     )
 }
 
@@ -47,11 +44,10 @@ fun Title(
     text: String? = null,
     fontSize: Dp = 12.dp,
     fontWeight: FontWeight = FontWeight.Medium,
-    textColor: Color = Color.Black,
-    onClick: () -> Unit = {}
+    textColor: Color = Color.Black
 ) {
     Text(
-        modifier = modifier.clickable(onClick = onClick),
+        modifier = modifier,
         textAlign = textAlign,
         text = getText(textId = textId, text = text),
         fontSize = fontSize.value.sp,

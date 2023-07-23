@@ -103,6 +103,7 @@ fun SignUpScreen(
         HorizontalSpacer()
 
         NavigationControls(
+            modifier = Modifier.fillMaxWidth(),
             navigateBack = navigateBack,
             navigateForward = { navigateForward(viewModel.emailValue) },
             isButtonNextEnabled = viewModel.validationState.isValid()

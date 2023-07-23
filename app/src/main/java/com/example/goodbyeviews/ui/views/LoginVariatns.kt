@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,8 +15,8 @@ import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 @Composable
-fun LoginVariants() {
-    Box(modifier = Modifier.fillMaxWidth()) {
+fun LoginVariants(modifier: Modifier = Modifier) {
+    Box(modifier = modifier) {
         Row(
             modifier = Modifier.align(Alignment.Center),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
