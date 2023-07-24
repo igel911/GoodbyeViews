@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,15 +35,14 @@ fun SignUpScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(PaddingValues(start = 16.dp, end = 16.dp))
+            .padding(PaddingValues(horizontal = 16.dp))
     ) {
 
         HorizontalSpacer()
 
         Title(
             textId = R.string.sign_up,
-            fontSize = 16,
-            fontWeight = FontWeight.Bold
+            textStyle = MaterialTheme.typography.titleSmall
         )
 
         HorizontalSpacer()
@@ -56,7 +55,6 @@ fun SignUpScreen(
 
         OutlinedTextInputWithTitle(
             labelText = R.string.name,
-            labelFontWeight = FontWeight.Bold,
             value = viewModel.nameValue,
             onValueChange = viewModel::updateNameValue,
             placeholderText = R.string.name
@@ -66,7 +64,6 @@ fun SignUpScreen(
 
         OutlinedTextInputWithTitle(
             labelText = R.string.email,
-            labelFontWeight = FontWeight.Bold,
             value = viewModel.emailValue,
             onValueChange = viewModel::updateEmailValue,
             placeholderText = R.string.email_hint
@@ -76,7 +73,6 @@ fun SignUpScreen(
 
         OutlinedPasswordInputWithTitle(
             titleText = R.string.password,
-            titleFontWeight = FontWeight.Bold,
             value = viewModel.passwordValue,
             onValueChange = viewModel::updatePasswordValue,
             placeholderText = R.string.password_hint

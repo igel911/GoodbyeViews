@@ -1,13 +1,14 @@
 package com.example.goodbyeviews.ui.views
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
@@ -19,18 +20,20 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.theme.roundedCornerShape10
+import com.example.goodbyeviews.ui.theme.textFieldColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OutlinedTextInput(
-    modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
     @StringRes placeholderText: Int = R.string.empty,
-    shape: Shape = RoundedCornerShape(10.dp),
+    placeholderTextStyle: TextStyle = MaterialTheme.typography.labelSmall,
+    shape: Shape = roundedCornerShape10,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     icon: ImageVector? = null,
     onIconClick: () -> Unit = {},
@@ -41,13 +44,18 @@ fun OutlinedTextInput(
         keyboardType = KeyboardType.Text,
         imeAction = ImeAction.None
     ),
-    textStyle: TextStyle = TextStyle(textAlign = TextAlign.Start)
+    textStyle: TextStyle = TextStyle(textAlign = TextAlign.Start),
+    textFieldColors: TextFieldColors = textFieldColors()
 ) {
     OutlinedTextField(
         modifier = modifier,
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text(text = stringResource(placeholderText)) },
+        placeholder = { Text(
+            text = stringResource(placeholderText),
+            style = placeholderTextStyle
+
+        ) },
         shape = shape,
         visualTransformation = visualTransformation,
         trailingIcon = {
@@ -63,7 +71,8 @@ fun OutlinedTextInput(
         singleLine = singleLine,
         maxLines = maxLines,
         keyboardOptions = keyboardOptions,
-        textStyle = textStyle
+        textStyle = textStyle,
+        colors = textFieldColors
     )
 }
 

@@ -7,21 +7,19 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.theme.smsTextStyle
+import com.example.goodbyeviews.ui.theme.textFieldColors
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
@@ -48,10 +46,6 @@ fun SmsCodeInput(
             keyboardType = KeyboardType.Number,
             imeAction = ImeAction.Next
         )
-        val colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.Gray
-        )
 
         OutlinedTextField(
             modifier = modifier.requiredWidth(48.dp),
@@ -65,8 +59,8 @@ fun SmsCodeInput(
             },
             shape = RoundedCornerShape(10.dp),
             keyboardOptions = keyboardOptions,
-            textStyle = TextStyle(textAlign = TextAlign.Center),
-            colors = colors
+            textStyle = smsTextStyle,
+            colors = textFieldColors()
         )
 
         OutlinedTextField(
@@ -83,8 +77,8 @@ fun SmsCodeInput(
             },
             shape = RoundedCornerShape(10.dp),
             keyboardOptions = keyboardOptions,
-            textStyle = TextStyle(textAlign = TextAlign.Center),
-            colors = colors
+            textStyle = smsTextStyle,
+            colors = textFieldColors()
         )
 
         OutlinedTextField(
@@ -101,8 +95,8 @@ fun SmsCodeInput(
             },
             shape = RoundedCornerShape(10.dp),
             keyboardOptions = keyboardOptions,
-            textStyle = TextStyle(textAlign = TextAlign.Center),
-            colors = colors
+            textStyle = smsTextStyle,
+            colors = textFieldColors()
         )
 
         OutlinedTextField(
@@ -118,8 +112,8 @@ fun SmsCodeInput(
                 }
             },
             shape = RoundedCornerShape(10.dp),
-            textStyle = TextStyle(textAlign = TextAlign.Center),
-            colors = colors,
+            textStyle = smsTextStyle,
+            colors = textFieldColors(),
             keyboardOptions = keyboardOptions.copy(imeAction = ImeAction.Done)
         )
     }

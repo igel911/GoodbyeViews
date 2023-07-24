@@ -3,35 +3,28 @@ package com.example.goodbyeviews.ui.views
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.theme.roundedCornerShape10
 
 @Composable
 fun OutlinedTextInputWithTitle(
-    modifier: Modifier = Modifier,
-    @StringRes labelText: Int = R.string.empty,
-    labelTextSize: Int = 12,
-    labelFontWeight: FontWeight = FontWeight.Medium,
-    labelTextColor: Color = Color.Black,
     value: String,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    @StringRes labelText: Int = R.string.empty,
     @StringRes placeholderText: Int = R.string.empty,
-    shape: Shape = RoundedCornerShape(10.dp)
+    shape: Shape = roundedCornerShape10
 ) {
     Column(modifier = modifier) {
         Title(
             textId = labelText,
-            fontSize = labelTextSize,
-            fontWeight = labelFontWeight,
-            textColor = labelTextColor
+            textStyle = MaterialTheme.typography.titleSmall
         )
 
         HorizontalSpacer()

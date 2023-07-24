@@ -4,11 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -27,15 +27,14 @@ fun LoginOptions(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(PaddingValues(start = 16.dp, end = 16.dp))
+            .padding(PaddingValues(horizontal = 16.dp))
     ) {
         HorizontalSpacer()
 
         Title(
             modifier = Modifier.align(Alignment.Start),
             textId = R.string.welcome,
-            fontSize = 24,
-            fontWeight = FontWeight.Bold
+            textStyle = MaterialTheme.typography.titleLarge
         )
 
         HorizontalSpacer()
@@ -61,7 +60,7 @@ fun LoginOptions(
         Title(
             modifier = Modifier.align(Alignment.Start),
             textId = R.string.forgot_password,
-            fontWeight = FontWeight.Bold,
+            textStyle = MaterialTheme.typography.titleSmall,
             textColor = Color.Blue
         )
 

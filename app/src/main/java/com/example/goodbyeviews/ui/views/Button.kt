@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.theme.cutCornerShape10
 
 
 @Composable
@@ -49,7 +50,7 @@ fun ButtonWithTitle(
 fun ButtonWithTitle(
     modifier: Modifier = Modifier,
     @StringRes text: Int = R.string.empty,
-    shape: CutCornerShape = CutCornerShape(10),
+    shape: CutCornerShape = cutCornerShape10,
     elevation: ButtonElevation = ButtonDefaults.buttonElevation(
         defaultElevation = 10.dp,
         pressedElevation = 15.dp,
