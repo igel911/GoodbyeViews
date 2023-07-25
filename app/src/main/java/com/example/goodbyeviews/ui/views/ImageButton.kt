@@ -16,22 +16,21 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
+import com.example.goodbyeviews.ui.theme.buttonBackColors
+import com.example.goodbyeviews.ui.theme.buttonElevation
 
 @Composable
 fun ImageButton(
     modifier: Modifier = Modifier,
     icon: ImageVector,
-    colors: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = Color.White,
-        contentColor = Color.Blue
-    ),
+    colors: ButtonColors = buttonBackColors(),
     onClick: () -> Unit = { }
 ) {
     Button(
         modifier = modifier,
         onClick = onClick,
         border = BorderStroke(1.dp, Color.Blue),
-        elevation = ButtonDefaults.buttonElevation(1.dp),
+        elevation = buttonElevation(),
         colors = colors,
         shape = RoundedCornerShape(10.dp)
     ) {
