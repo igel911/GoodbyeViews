@@ -4,8 +4,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.goodbyeviews.ui.navigation.AppNavigator
+import com.example.goodbyeviews.ui.navigation.AppNavigatorImpl
+import com.example.goodbyeviews.ui.navigation.Destination
 
 class SignUpViewModel: ViewModel() {
+    private val appNavigator: AppNavigator = AppNavigatorImpl
     var nameValue by mutableStateOf("")
         private set
     var emailValue by mutableStateOf("")
@@ -43,5 +47,13 @@ class SignUpViewModel: ViewModel() {
     fun updateEmailValue(email: String) {
         emailValue = email
         validationState = validationState.copy(isEmailValid = email.isNotEmpty())
+    }
+
+    fun navigateToEnterCodeScreen() {
+        appNavigator.tryNavigateTo(Destination.EnterCodeScreen(emailValue))
+    }
+
+    fun navigateBack() {
+        appNavigator.tryNavigateBack()
     }
 }

@@ -6,12 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
+import com.example.goodbyeviews.ui.MainViewModel
+import com.example.goodbyeviews.ui.navigation.Destination
+import com.example.goodbyeviews.ui.navigation.EMAIL_KEY
+import com.example.goodbyeviews.ui.navigation.MyNavHost
+import com.example.goodbyeviews.ui.navigation.NavigationEffects
+import com.example.goodbyeviews.ui.navigation.composable
 import com.example.goodbyeviews.ui.screens.enter_code.EnterCodeScreen
 import com.example.goodbyeviews.ui.screens.login.LoginScreen
 import com.example.goodbyeviews.ui.screens.sign_up.SignUpScreen
@@ -21,47 +25,40 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            GoodbyeViewsTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val navController = rememberNavController()
+            MainScreen()
+        }
+    }
+}
 
-                    NavHost(navController = navController, startDestination = "login") {
-                        composable(route = "login") {
-                            LoginScreen(
-                                navigateForward = {},
-                                navigateToSignUp = { navController.navigate("signUp") }
-                            )
-                        }
+@Composable
+fun MainScreen() {
+    val viewModel = viewModel { MainViewModel() }
+    val navController = rememberNavController()
 
-                        composable(
-                            route = "signUp",
-                        ) {
-                            SignUpScreen(
-                                navigateBack = { navController.navigateUp() },
-                                navigateForward = { emailValue ->
-                                    navController.navigate("enterCode/$emailValue")
-                                }
-                            )
-                        }
-
-                        composable(
-                            route = "enterCode/{userEmail}",
-                            arguments = getEnterCodeArgs()
-                        ) { backStackEntry ->
-                            EnterCodeScreen(
-                                backStackEntry.arguments?.getString("userEmail"),
-                                navigateBack = { navController.navigateUp() },
-                                navigateForward = {  }
-                            )
-                        }
-                    }
+    NavigationEffects(
+        navigationChannel = viewModel.navigationChannel,
+        navHostController = navController
+    )
+    GoodbyeViewsTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            MyNavHost(
+                navController = navController,
+                startDestination = Destination.LoginScreen
+            ) {
+                composable(destination = Destination.LoginScreen) {
+                    LoginScreen()
+                }
+                composable(destination = Destination.SignUpScreen) {
+                    SignUpScreen()
+                }
+                composable(destination = Destination.EnterCodeScreen) { navBackStackEntry ->
+                    val email = navBackStackEntry.arguments?.getString(EMAIL_KEY)
+                    EnterCodeScreen(email.toString())
                 }
             }
         }
     }
-
-    private fun getEnterCodeArgs() = listOf(navArgument("userEmail") { type = NavType.StringType })
 }

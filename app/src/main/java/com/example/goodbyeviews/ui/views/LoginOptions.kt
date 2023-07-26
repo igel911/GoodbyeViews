@@ -18,10 +18,7 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
 
 @Composable
-fun LoginOptions(
-    navigateForward: () -> Unit,
-    navigateToSignUp: () -> Unit
-) {
+fun LoginOptions() {
     val viewModel = viewModel { LoginViewModel() }
 
     Column(
@@ -69,7 +66,7 @@ fun LoginOptions(
         ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
             text = R.string.login,
-            onClick = { navigateForward() },
+            onClick = { },
             isButtonEnabled = viewModel.validationState.isValid()
         )
 
@@ -77,7 +74,7 @@ fun LoginOptions(
 
         TitleRegisterNow(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onRegisterNowClick = { navigateToSignUp() }
+            onRegisterNowClick = { viewModel.navigateToSignUpScreen() }
         )
 
         HorizontalDivider()
@@ -99,6 +96,6 @@ fun LoginOptions(
 @Composable
 fun LoginOptionsPreview() {
     GoodbyeViewsTheme {
-        LoginOptions({ }, { })
+        LoginOptions()
     }
 }

@@ -4,8 +4,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.goodbyeviews.ui.navigation.AppNavigator
+import com.example.goodbyeviews.ui.navigation.AppNavigatorImpl
 
 class EnterCodeViewModel : ViewModel() {
+    private val appNavigator: AppNavigator = AppNavigatorImpl
+
     var firstValue by mutableStateOf("")
         private set
     var secondValue by mutableStateOf("")
@@ -36,5 +40,9 @@ class EnterCodeViewModel : ViewModel() {
     fun updateFourthValue(value: String) {
         fourthValue = value
         validationState = validationState.copy(isFourthValid = value.isNotEmpty())
+    }
+
+    fun navigateBack() {
+        appNavigator.tryNavigateBack()
     }
 }

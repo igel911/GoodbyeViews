@@ -23,12 +23,9 @@ import com.example.goodbyeviews.ui.views.SmsCodeInput
 import com.example.goodbyeviews.ui.views.Title
 
 @Composable
-fun EnterCodeScreen(
-    userEmail: String? = null,
-    navigateBack: () -> Unit,
-    navigateForward: () -> Unit
-) {
+fun EnterCodeScreen(email: String) {
     val viewModel = viewModel { EnterCodeViewModel() }
+
 
     ConstraintLayout(
         modifier = Modifier
@@ -57,7 +54,7 @@ fun EnterCodeScreen(
         )
 
         Title(
-            text = stringResource(R.string.code_was_sent, userEmail.toString()),
+            text = stringResource(R.string.code_was_sent, email),
             textStyle = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .padding(top = 4.dp)
@@ -112,8 +109,8 @@ fun EnterCodeScreen(
                 end.linkTo(parent.end)
                 height = Dimension.wrapContent
             },
-            navigateBack = navigateBack,
-            navigateForward = navigateForward,
+            navigateBack = { viewModel.navigateBack() },
+            navigateForward = { },
             isButtonNextEnabled = viewModel.validationState.isValid()
         )
     }
@@ -123,9 +120,6 @@ fun EnterCodeScreen(
 @Composable
 fun EnterCodeScreenPreview() {
     GoodbyeViewsTheme {
-        EnterCodeScreen(
-            navigateBack = { },
-            navigateForward = { }
-        )
+        EnterCodeScreen("temp@mail.com")
     }
 }

@@ -25,10 +25,7 @@ import com.example.goodbyeviews.ui.views.OutlinedTextInputWithTitle
 import com.example.goodbyeviews.ui.views.Title
 
 @Composable
-fun SignUpScreen(
-    navigateBack: () -> Unit,
-    navigateForward: (String) -> Unit
-) {
+fun SignUpScreen() {
     val viewModel = viewModel { SignUpViewModel() }
 
     Column(
@@ -100,8 +97,8 @@ fun SignUpScreen(
 
         NavigationControls(
             modifier = Modifier.fillMaxWidth(),
-            navigateBack = navigateBack,
-            navigateForward = { navigateForward(viewModel.emailValue) },
+            navigateBack = { viewModel.navigateBack() },
+            navigateForward = { viewModel.navigateToEnterCodeScreen() },
             isButtonNextEnabled = viewModel.validationState.isValid()
         )
     }
@@ -111,9 +108,6 @@ fun SignUpScreen(
 @Composable
 fun SignUpScreenPreview() {
     GoodbyeViewsTheme {
-        SignUpScreen(
-            navigateBack = { },
-            navigateForward = { }
-        )
+        SignUpScreen()
     }
 }
