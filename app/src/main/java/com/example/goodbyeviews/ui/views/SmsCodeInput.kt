@@ -3,9 +3,9 @@ package com.example.goodbyeviews.ui.views
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -13,6 +13,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,9 +35,10 @@ fun SmsCodeInput(
     onFourthValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val (secondFocus, thirdFocus, fourthFocus) = remember {
+    val (firstFocus, secondFocus, thirdFocus, fourthFocus) = remember {
         FocusRequester.createRefs()
     }
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Row(
         modifier = modifier,
@@ -48,16 +50,20 @@ fun SmsCodeInput(
         )
 
         OutlinedTextField(
-            modifier = modifier.requiredWidth(48.dp),
+            modifier = modifier
+                .requiredWidth(48.dp)
+                .focusRequester(firstFocus),
             singleLine = true,
             value = firstValue,
             onValueChange = { value ->
                 onFirstValueChanged(value)
-                if (value.length == 1) {
+                if (value.isNotEmpty()) {
                     secondFocus.requestFocus()
+                } else if (value.isEmpty()) {
+                    firstFocus.requestFocus()
                 }
             },
-            shape = RoundedCornerShape(10.dp),
+            shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
             textStyle = smsTextStyle,
             colors = textFieldColors()
@@ -71,11 +77,13 @@ fun SmsCodeInput(
             value = secondValue,
             onValueChange = { value ->
                 onSecondValueChanged(value)
-                if (value.length == 1) {
+                if (value.isNotEmpty()) {
                     thirdFocus.requestFocus()
+                } else if (value.isEmpty()) {
+                    firstFocus.requestFocus()
                 }
             },
-            shape = RoundedCornerShape(10.dp),
+            shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
             textStyle = smsTextStyle,
             colors = textFieldColors()
@@ -89,11 +97,13 @@ fun SmsCodeInput(
             value = thirdValue,
             onValueChange = { value ->
                 onThirdValueChanged(value)
-                if (value.length == 1) {
+                if (value.isNotEmpty()) {
                     fourthFocus.requestFocus()
+                } else if (value.isEmpty()) {
+                    secondFocus.requestFocus()
                 }
             },
-            shape = RoundedCornerShape(10.dp),
+            shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
             textStyle = smsTextStyle,
             colors = textFieldColors()
@@ -107,11 +117,13 @@ fun SmsCodeInput(
             value = fourthValue,
             onValueChange = { value ->
                 onFourthValueChanged(value)
-                if (value.length == 1) {
-
+                if (value.isNotEmpty()) {
+                    keyboardController?.hide()
+                } else if (value.isEmpty()) {
+                    thirdFocus.requestFocus()
                 }
             },
-            shape = RoundedCornerShape(10.dp),
+            shape = MaterialTheme.shapes.medium,
             textStyle = smsTextStyle,
             colors = textFieldColors(),
             keyboardOptions = keyboardOptions.copy(imeAction = ImeAction.Done)
