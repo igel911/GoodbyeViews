@@ -3,12 +3,17 @@ package com.example.goodbyeviews.ui.screens.enter_code
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.goodbyeviews.ui.navigation.AppNavigator
 import com.example.goodbyeviews.ui.navigation.AppNavigatorImpl
+import com.example.goodbyeviews.ui.navigation.EMAIL_KEY
 
-class EnterCodeViewModel : ViewModel() {
+class EnterCodeViewModel(
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
     private val appNavigator: AppNavigator = AppNavigatorImpl
+    val email = savedStateHandle.get<String>(EMAIL_KEY).orEmpty()
 
     var firstValue by mutableStateOf("")
         private set

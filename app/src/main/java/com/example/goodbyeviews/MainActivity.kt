@@ -12,7 +12,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.goodbyeviews.ui.MainViewModel
 import com.example.goodbyeviews.ui.navigation.Destination
-import com.example.goodbyeviews.ui.navigation.EMAIL_KEY
 import com.example.goodbyeviews.ui.navigation.MyNavHost
 import com.example.goodbyeviews.ui.navigation.NavigationEffects
 import com.example.goodbyeviews.ui.navigation.composable
@@ -54,9 +53,8 @@ fun MainScreen() {
                 composable(destination = Destination.SignUpScreen) {
                     SignUpScreen()
                 }
-                composable(destination = Destination.EnterCodeScreen) { navBackStackEntry ->
-                    val email = navBackStackEntry.arguments?.getString(EMAIL_KEY)
-                    EnterCodeScreen(email.toString())
+                composable(destination = Destination.EnterCodeScreen) {
+                    EnterCodeScreen()
                 }
             }
         }
