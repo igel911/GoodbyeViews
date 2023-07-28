@@ -15,39 +15,18 @@ class EnterCodeViewModel(
     private val appNavigator: AppNavigator = AppNavigatorImpl
     val email = savedStateHandle.get<String>(EMAIL_KEY).orEmpty()
 
-    var firstValue by mutableStateOf("")
-        private set
-    var secondValue by mutableStateOf("")
-        private set
-    var thirdValue by mutableStateOf("")
-        private set
-    var fourthValue by mutableStateOf("")
+    var enterCodeState by mutableStateOf(EnterCodeState())
         private set
 
-    var validationState by mutableStateOf(EnterCodeValidator())
+    var validationState by mutableStateOf(EnterCodeValidator(EnterCodeState()))
         private set
-
-    fun updateFirstValue(value: String) {
-        firstValue = value
-        validationState = validationState.copy(isFirstValid = value.isNotEmpty())
-    }
-
-    fun updateSecondValue(value: String) {
-        secondValue = value
-        validationState = validationState.copy(isSecondValid = value.isNotEmpty())
-    }
-
-    fun updateThirdValue(value: String) {
-        thirdValue = value
-        validationState = validationState.copy(isThirdValid = value.isNotEmpty())
-    }
-
-    fun updateFourthValue(value: String) {
-        fourthValue = value
-        validationState = validationState.copy(isFourthValid = value.isNotEmpty())
-    }
 
     fun navigateBack() {
         appNavigator.tryNavigateBack()
+    }
+
+    fun updateEnterCodeState(newEnterCodeState: EnterCodeState) {
+        enterCodeState = newEnterCodeState
+        validationState = validationState.copy(enterCodeState = newEnterCodeState)
     }
 }

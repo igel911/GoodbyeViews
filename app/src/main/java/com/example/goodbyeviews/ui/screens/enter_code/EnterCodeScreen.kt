@@ -67,14 +67,8 @@ fun EnterCodeScreen() {
         )
 
         SmsCodeInput(
-            firstValue = viewModel.firstValue,
-            onFirstValueChanged = viewModel::updateFirstValue,
-            secondValue = viewModel.secondValue,
-            onSecondValueChanged = viewModel::updateSecondValue,
-            thirdValue = viewModel.thirdValue,
-            onThirdValueChanged = viewModel::updateThirdValue,
-            fourthValue = viewModel.fourthValue,
-            onFourthValueChanged = viewModel::updateFourthValue,
+            enterCodeState = viewModel.enterCodeState,
+            onStateChanged = viewModel::updateEnterCodeState,
             modifier = Modifier
                 .padding(top = 16.dp)
                 .constrainAs(smsCodeInput) {

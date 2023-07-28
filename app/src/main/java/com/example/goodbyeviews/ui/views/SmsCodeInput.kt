@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.goodbyeviews.ui.screens.enter_code.EnterCodeState
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 import com.example.goodbyeviews.ui.theme.smsTextStyle
 import com.example.goodbyeviews.ui.theme.textFieldColors
@@ -25,14 +26,8 @@ import com.example.goodbyeviews.ui.theme.textFieldColors
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun SmsCodeInput(
-    firstValue: String,
-    onFirstValueChanged: (String) -> Unit,
-    secondValue: String,
-    onSecondValueChanged: (String) -> Unit,
-    thirdValue: String,
-    onThirdValueChanged: (String) -> Unit,
-    fourthValue: String,
-    onFourthValueChanged: (String) -> Unit,
+    enterCodeState: EnterCodeState,
+    onStateChanged: (EnterCodeState) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val (firstFocus, secondFocus, thirdFocus, fourthFocus) = remember {
@@ -54,9 +49,9 @@ fun SmsCodeInput(
                 .requiredWidth(48.dp)
                 .focusRequester(firstFocus),
             singleLine = true,
-            value = firstValue,
+            value = enterCodeState.firstValue,
             onValueChange = { value ->
-                onFirstValueChanged(value)
+                onStateChanged(enterCodeState.copy(firstValue = value))
                 if (value.isNotEmpty()) {
                     secondFocus.requestFocus()
                 } else if (value.isEmpty()) {
@@ -74,9 +69,9 @@ fun SmsCodeInput(
                 .requiredWidth(48.dp)
                 .focusRequester(secondFocus),
             singleLine = true,
-            value = secondValue,
+            value = enterCodeState.secondValue,
             onValueChange = { value ->
-                onSecondValueChanged(value)
+                onStateChanged(enterCodeState.copy(secondValue = value))
                 if (value.isNotEmpty()) {
                     thirdFocus.requestFocus()
                 } else if (value.isEmpty()) {
@@ -94,9 +89,9 @@ fun SmsCodeInput(
                 .requiredWidth(48.dp)
                 .focusRequester(thirdFocus),
             singleLine = true,
-            value = thirdValue,
+            value = enterCodeState.thirdValue,
             onValueChange = { value ->
-                onThirdValueChanged(value)
+                onStateChanged(enterCodeState.copy(thirdValue = value))
                 if (value.isNotEmpty()) {
                     fourthFocus.requestFocus()
                 } else if (value.isEmpty()) {
@@ -114,9 +109,9 @@ fun SmsCodeInput(
                 .requiredWidth(48.dp)
                 .focusRequester(fourthFocus),
             singleLine = true,
-            value = fourthValue,
+            value = enterCodeState.fourthValue,
             onValueChange = { value ->
-                onFourthValueChanged(value)
+                onStateChanged(enterCodeState.copy(fourthValue = value))
                 if (value.isNotEmpty()) {
                     keyboardController?.hide()
                 } else if (value.isEmpty()) {
@@ -136,14 +131,8 @@ fun SmsCodeInput(
 fun SmsCodeInputPreview() {
     GoodbyeViewsTheme {
         SmsCodeInput(
-            firstValue = "1",
-            onFirstValueChanged = {},
-            secondValue = "2",
-            onSecondValueChanged = {},
-            thirdValue = "3",
-            onThirdValueChanged = {},
-            fourthValue = "4",
-            onFourthValueChanged = {}
+            EnterCodeState("1", "2", "3", "4"),
+            { }
         )
     }
 }
