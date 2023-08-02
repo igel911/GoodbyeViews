@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -31,7 +29,7 @@ fun LoginOptions() {
         Title(
             modifier = Modifier.align(Alignment.Start),
             textId = R.string.welcome,
-            textStyle = MaterialTheme.typography.titleLarge
+            textStyle = GoodbyeViewsTheme.typography.h2
         )
 
         HorizontalSpacer()
@@ -57,8 +55,8 @@ fun LoginOptions() {
         Title(
             modifier = Modifier.align(Alignment.Start),
             textId = R.string.forgot_password,
-            textStyle = MaterialTheme.typography.titleSmall,
-            textColor = Color.Blue
+            textStyle = GoodbyeViewsTheme.typography.h5,
+            textColor = GoodbyeViewsTheme.colors.highlight.darkest
         )
 
         HorizontalSpacer()

@@ -10,13 +10,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@Composable
 fun regularStyle(
-    regularColor: Color = Color.Black,
+    regularColor: Color = GoodbyeViewsTheme.colors.neutralDark.darkest,
     fontSize: Int = 12
 ) = SpanStyle(color = regularColor, fontSize = fontSize.sp)
 
+@Composable
 fun clickableStyle(
-    clickableColor: Color = Color.Blue,
+    clickableColor: Color = GoodbyeViewsTheme.colors.highlight.darkest,
     fontSize: Int = 12
 ) = SpanStyle(
     color = clickableColor,
@@ -33,11 +35,11 @@ fun buttonElevation(): ButtonElevation = ButtonDefaults.buttonElevation(
 
 @Composable
 fun buttonColors(): ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = Color.Blue
+    containerColor = GoodbyeViewsTheme.colors.highlight.darkest
 )
 
 @Composable
 fun buttonBackColors(): ButtonColors = ButtonDefaults.buttonColors(
     containerColor = Color.White,
-    contentColor = Color.Blue
+    contentColor = GoodbyeViewsTheme.colors.highlight.darkest
 )

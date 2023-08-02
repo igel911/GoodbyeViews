@@ -5,7 +5,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
@@ -22,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
-import com.example.goodbyeviews.ui.theme.roundedCornerShape10
 import com.example.goodbyeviews.ui.theme.textFieldColors
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,8 +30,8 @@ fun OutlinedTextInput(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     @StringRes placeholderText: Int = R.string.empty,
-    placeholderTextStyle: TextStyle = MaterialTheme.typography.labelSmall,
-    shape: Shape = roundedCornerShape10,
+    placeholderTextStyle: TextStyle = GoodbyeViewsTheme.typography.bodyS,
+    shape: Shape = GoodbyeViewsTheme.shapes.medium,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     icon: ImageVector? = null,
     onIconClick: () -> Unit = {},

@@ -1,7 +1,6 @@
 package com.example.goodbyeviews.ui.views
 
 import androidx.annotation.StringRes
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +15,7 @@ import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 fun Title(
     @StringRes textId: Int,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = GoodbyeViewsTheme.typography.bodyM,
     textColor: Color = Color.Black
 ) {
     Title(
@@ -31,7 +30,7 @@ fun Title(
 fun Title(
     text: String,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textStyle: TextStyle = GoodbyeViewsTheme.typography.bodyM,
     textColor: Color = Color.Black
 ) {
     Text(

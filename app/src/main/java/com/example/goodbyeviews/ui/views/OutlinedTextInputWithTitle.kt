@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.goodbyeviews.R
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
-import com.example.goodbyeviews.ui.theme.roundedCornerShape10
 
 @Composable
 fun OutlinedTextInputWithTitle(
@@ -19,7 +18,7 @@ fun OutlinedTextInputWithTitle(
     modifier: Modifier = Modifier,
     @StringRes labelText: Int = R.string.empty,
     @StringRes placeholderText: Int = R.string.empty,
-    shape: Shape = roundedCornerShape10
+    shape: Shape = GoodbyeViewsTheme.shapes.medium
 ) {
     Column(modifier = modifier) {
         Title(

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,7 +41,7 @@ fun EnterCodeScreen() {
 
         Title(
             textId = R.string.enter_code,
-            textStyle = MaterialTheme.typography.titleMedium,
+            textStyle = GoodbyeViewsTheme.typography.h4,
             modifier = Modifier.constrainAs(titleEnterCode) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
@@ -54,7 +53,7 @@ fun EnterCodeScreen() {
 
         Title(
             text = stringResource(R.string.code_was_sent, viewModel.email),
-            textStyle = MaterialTheme.typography.bodyMedium,
+            textStyle = GoodbyeViewsTheme.typography.bodyM,
             modifier = Modifier
                 .padding(top = 4.dp)
                 .constrainAs(titleWasSent) {
@@ -82,7 +81,7 @@ fun EnterCodeScreen() {
 
         Title(
             textId = R.string.resend_code,
-            textStyle = MaterialTheme.typography.titleMedium,
+            textStyle = GoodbyeViewsTheme.typography.h2,
             textColor = Color.Blue,
             modifier = Modifier
                 .padding(top = 20.dp)

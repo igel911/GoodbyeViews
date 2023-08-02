@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.goodbyeviews.ui.screens.enter_code.EnterCodeState
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
-import com.example.goodbyeviews.ui.theme.smsTextStyle
 import com.example.goodbyeviews.ui.theme.textFieldColors
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
@@ -60,7 +59,7 @@ fun SmsCodeInput(
             },
             shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
-            textStyle = smsTextStyle,
+            textStyle = GoodbyeViewsTheme.typography.smsTextStyle,
             colors = textFieldColors()
         )
 
@@ -80,7 +79,7 @@ fun SmsCodeInput(
             },
             shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
-            textStyle = smsTextStyle,
+            textStyle = GoodbyeViewsTheme.typography.smsTextStyle,
             colors = textFieldColors()
         )
 
@@ -100,7 +99,7 @@ fun SmsCodeInput(
             },
             shape = MaterialTheme.shapes.medium,
             keyboardOptions = keyboardOptions,
-            textStyle = smsTextStyle,
+            textStyle = GoodbyeViewsTheme.typography.smsTextStyle,
             colors = textFieldColors()
         )
 
@@ -119,7 +118,7 @@ fun SmsCodeInput(
                 }
             },
             shape = MaterialTheme.shapes.medium,
-            textStyle = smsTextStyle,
+            textStyle = GoodbyeViewsTheme.typography.smsTextStyle,
             colors = textFieldColors(),
             keyboardOptions = keyboardOptions.copy(imeAction = ImeAction.Done)
         )
