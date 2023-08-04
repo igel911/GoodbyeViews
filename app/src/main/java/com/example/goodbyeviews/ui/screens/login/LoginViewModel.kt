@@ -31,4 +31,8 @@ class LoginViewModel : ViewModel() {
     fun navigateToSignUpScreen() {
         appNavigator.tryNavigateTo(Destination.SignUpScreen())
     }
+
+    fun navigateToInterestsScreen() {
+        appNavigator.tryNavigateTo(Destination.InterestsScreen())
+    }
 }

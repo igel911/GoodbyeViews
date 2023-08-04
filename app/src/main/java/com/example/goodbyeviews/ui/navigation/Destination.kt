@@ -22,6 +22,8 @@ sealed class Destination(protected val route: String, vararg params: String) {
             EMAIL_KEY to fistName
         )
     }
+
+    object InterestsScreen : NoArgumentsDestination("interests")
 }
 
 internal fun String.appendParams(vararg params: Pair<String, Any?>): String {

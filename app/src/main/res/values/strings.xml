@@ -28,4 +28,7 @@
     <string name="code_was_sent">A 4-digit code was sent to %s</string>
     <string name="resend_code">Resend code</string>
     <string name="continue_title">"Continue"</string>
+    <string name="personalise_title">Personalise your experience</string>
+    <string name="personalise_text">Choose your interests.</string>
+    <string name="next">Next</string>
 </resources>

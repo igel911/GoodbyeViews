@@ -64,7 +64,7 @@ fun LoginOptions() {
         ButtonWithTitle(
             modifier = Modifier.fillMaxWidth(),
             text = R.string.login,
-            onClick = { },
+            onClick = viewModel::navigateToInterestsScreen,
             isButtonEnabled = viewModel.validationState.isValid()
         )
 
