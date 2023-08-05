@@ -1,10 +1,10 @@
 package com.example.goodbyeviews.ui.navigation
 
-import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDeepLink
@@ -37,22 +37,20 @@ fun NavigationEffects(
     navigationChannel: Channel<NavigationIntent>,
     navHostController: NavHostController
 ) {
-    val activity = (LocalContext.current as? Activity)
-    LaunchedEffect(activity, navHostController, navigationChannel) {
+    val hostController by rememberUpdatedState(newValue = navHostController)
+
+    LaunchedEffect(navigationChannel) {
         navigationChannel.receiveAsFlow().collect { intent ->
-            if (activity?.isFinishing == true) {
-                return@collect
-            }
             when (intent) {
                 is NavigationIntent.NavigateBack -> {
                     if (intent.route != null) {
-                        navHostController.popBackStack(intent.route, intent.inclusive)
+                        hostController.popBackStack(intent.route, intent.inclusive)
                     } else {
-                        navHostController.popBackStack()
+                        hostController.popBackStack()
                     }
                 }
                 is NavigationIntent.NavigateTo -> {
-                    navHostController.navigate(intent.route) {
+                    hostController.navigate(intent.route) {
                         launchSingleTop = intent.isSingleTop
                         intent.popUpToRoute?.let { popUpToRoute ->
                             popUpTo(popUpToRoute) { inclusive = intent.inclusive }
