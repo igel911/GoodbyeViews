@@ -2,6 +2,7 @@ package com.example.goodbyeviews.ui.screens.interest_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.goodbyeviews.ui.extention.stateIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
@@ -16,10 +17,17 @@ class InterestListViewModel : ViewModel() {
     val progressState = itemsState.map { items ->
         val selectedItemQuantity = items.filter { it.isSelected }.size
         selectedItemQuantity / 5.0F
-    }
+    }.stateIn(
+        scope = viewModelScope,
+        initialValue = 0.0F
+    )
+
     val buttonState = progressState.map {
         it >= 1.0F
-    }
+    }.stateIn(
+        scope = viewModelScope,
+        initialValue = false
+    )
 
     private fun loadInterests(): List<InterestItem> =
         mutableListOf<InterestItem>().apply {
