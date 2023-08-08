@@ -3,12 +3,15 @@ package com.example.goodbyeviews.ui.screens.interest_list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.goodbyeviews.ui.extention.stateIn
+import com.example.goodbyeviews.ui.navigation.AppNavigator
+import com.example.goodbyeviews.ui.navigation.AppNavigatorImpl
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class InterestListViewModel : ViewModel() {
+    private val appNavigator: AppNavigator = AppNavigatorImpl
 
     private val _itemsState: MutableStateFlow<List<InterestItem>> =
         MutableStateFlow(loadInterests())
@@ -45,5 +48,9 @@ class InterestListViewModel : ViewModel() {
             }
             _itemsState.emit(items)
         }
+    }
+
+    fun navigateTo() {
+
     }
 }

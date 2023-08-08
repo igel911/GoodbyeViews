@@ -19,7 +19,7 @@ fun LoginVariants(modifier: Modifier = Modifier) {
     Box(modifier = modifier) {
         Row(
             modifier = Modifier.align(Alignment.Center),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Image(
                 painter = painterResource(id = R.drawable.buttongoogle),

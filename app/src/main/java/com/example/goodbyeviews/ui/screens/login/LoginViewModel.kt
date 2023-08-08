@@ -32,7 +32,7 @@ class LoginViewModel : ViewModel() {
         appNavigator.tryNavigateTo(Destination.SignUpScreen())
     }
 
-    fun navigateToInterestsScreen() {
-        appNavigator.tryNavigateTo(Destination.InterestsScreen())
+    fun navigateToInterestsPagerScreen() {
+        appNavigator.tryNavigateTo(Destination.InterestsPagingScreen())
     }
 }

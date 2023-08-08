@@ -31,4 +31,6 @@
     <string name="personalise_title">Personalise your experience</string>
     <string name="personalise_text">Choose your interests.</string>
     <string name="next">Next</string>
+    <string name="create_prototype_title">Create a prototype in just a few minutes</string>
+    <string name="create_prototype_text">Enjoy these pre-made components and worry only about creating the best product ever.</string>
 </resources>

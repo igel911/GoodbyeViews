@@ -18,6 +18,7 @@ import com.example.goodbyeviews.ui.navigation.composable
 import com.example.goodbyeviews.ui.screens.enter_code.EnterCodeScreen
 import com.example.goodbyeviews.ui.screens.interest_list.InterestListScreen
 import com.example.goodbyeviews.ui.screens.login.LoginScreen
+import com.example.goodbyeviews.ui.screens.paging.InterestPagingScreen
 import com.example.goodbyeviews.ui.screens.sign_up.SignUpScreen
 import com.example.goodbyeviews.ui.theme.GoodbyeViewsTheme
 
@@ -59,6 +60,9 @@ fun MainScreen() {
                 }
                 composable(destination = Destination.InterestsScreen) {
                     InterestListScreen()
+                }
+                composable(destination = Destination.InterestsPagingScreen) {
+                    InterestPagingScreen()
                 }
             }
         }

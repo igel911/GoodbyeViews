@@ -24,6 +24,8 @@ sealed class Destination(protected val route: String, vararg params: String) {
     }
 
     object InterestsScreen : NoArgumentsDestination("interests")
+
+    object InterestsPagingScreen : NoArgumentsDestination("interests_paging")
 }
 
 internal fun String.appendParams(vararg params: Pair<String, Any?>): String {
